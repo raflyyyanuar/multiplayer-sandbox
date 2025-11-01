@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc05is6aiotk6"]
+
+[ext_resource type="Script" uid="uid://b4aqsixr64aje" path="res://confirmation_panel.gd" id="1_gikuw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm2m"]
+expand_margin_left = 12.0
+expand_margin_top = 12.0
+expand_margin_right = 12.0
+expand_margin_bottom = 12.0
+
+[node name="ConfirmationPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 1
+script = ExtResource("1_gikuw")
+
+[node name="ScreenBlock" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -273.0
+offset_top = -29.0
+offset_right = 273.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xm2m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Are you sure you want to leave?"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "As you are the host, leaving will disconnect all players from your room."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PositiveButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Leave"
+
+[node name="NegativeButton" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stay"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/PositiveButton" to="." method="_on_positive_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/NegativeButton" to="." method="_on_negative_button_pressed"]

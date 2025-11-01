@@ -1,0 +1,123 @@
+[gd_scene load_steps=4 format=3 uid="uid://blo7hdl6886k8"]
+
+[ext_resource type="Script" uid="uid://bi6ws8g8ues4y" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cya2j34cftfsl" path="res://simple_loading_screen.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bc05is6aiotk6" path="res://confirmation_panel.tscn" id="3_h2yge"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ig7tw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 33.0
+offset_right = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsVBox" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="IPAddressLE" type="LineEdit" parent="VBoxContainer/OptionsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "ip address"
+expand_to_text_length = true
+
+[node name="UsernameLE" type="LineEdit" parent="VBoxContainer/OptionsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Guest"
+placeholder_text = "username"
+expand_to_text_length = true
+
+[node name="JoinButton" type="Button" parent="VBoxContainer/OptionsVBox"]
+layout_mode = 2
+text = "Join"
+
+[node name="HostButton" type="Button" parent="VBoxContainer/OptionsVBox"]
+layout_mode = 2
+text = "Host"
+
+[node name="ErrorLabel" type="Label" parent="VBoxContainer/OptionsVBox"]
+unique_name_in_owner = true
+modulate = Color(0.9620293, 0.2763801, 0.28233346, 1)
+layout_mode = 2
+text = "Can't connect!"
+horizontal_alignment = 1
+
+[node name="ResultVBox" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="IdLabel" type="Label" parent="VBoxContainer/ResultVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ID: unique Id"
+horizontal_alignment = 1
+
+[node name="ResultLabel" type="Label" parent="VBoxContainer/ResultVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "You have joined!"
+horizontal_alignment = 1
+
+[node name="LeaveButton" type="Button" parent="VBoxContainer/ResultVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Leave"
+
+[node name="InteractionVBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SayHiButton" type="Button" parent="VBoxContainer/InteractionVBox"]
+layout_mode = 2
+text = "Say hi to"
+
+[node name="PeerOptionsButton" type="OptionButton" parent="VBoxContainer/InteractionVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ClearLogButton" type="Button" parent="VBoxContainer/InteractionVBox"]
+layout_mode = 2
+text = "Clear Logs"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LogsContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+
+[node name="SimpleLoadingScreen" parent="." instance=ExtResource("2_h2yge")]
+visible = false
+layout_mode = 1
+
+[node name="LeaveConfirmationPanel" parent="." instance=ExtResource("3_h2yge")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="VBoxContainer/OptionsVBox/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsVBox/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResultVBox/LeaveButton" to="." method="_on_leave_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/InteractionVBox/SayHiButton" to="." method="_on_say_hi_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/InteractionVBox/ClearLogButton" to="." method="_on_clear_log_button_pressed"]
