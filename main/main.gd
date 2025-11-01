@@ -8,6 +8,7 @@ extends Control
 @onready var result_v_box: VBoxContainer = %ResultVBox
 @onready var id_label: Label = %IdLabel
 @onready var result_label: Label = %ResultLabel
+@onready var start_button: Button = %StartButton
 
 @onready var simple_loading_screen: SimpleLoadingScreen = $SimpleLoadingScreen
 @onready var leave_confirmation_panel: ConfirmationPanel = $LeaveConfirmationPanel
@@ -91,6 +92,7 @@ func _on_host_failed() -> void:
 
 
 func _on_host_successful() -> void:
+	start_button.show()
 	on_option_successful("You are hosting!")
 #endregion
 
@@ -221,3 +223,7 @@ func _on_clear_log_button_pressed() -> void:
 func clear_logs() -> void:
 	for l in logs_container.get_children():
 		l.queue_free()
+
+
+func _on_start_button_pressed() -> void:
+	pass

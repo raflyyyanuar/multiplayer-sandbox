@@ -76,8 +76,13 @@ layout_mode = 2
 text = "You have joined!"
 horizontal_alignment = 1
 
-[node name="LeaveButton" type="Button" parent="VBoxContainer/ResultVBox"]
+[node name="StartButton" type="Button" parent="VBoxContainer/ResultVBox"]
 unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Start"
+
+[node name="LeaveButton" type="Button" parent="VBoxContainer/ResultVBox"]
 layout_mode = 2
 text = "Leave"
 
@@ -118,6 +123,7 @@ layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/OptionsVBox/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsVBox/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ResultVBox/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ResultVBox/LeaveButton" to="." method="_on_leave_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/InteractionVBox/SayHiButton" to="." method="_on_say_hi_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/InteractionVBox/ClearLogButton" to="." method="_on_clear_log_button_pressed"]
