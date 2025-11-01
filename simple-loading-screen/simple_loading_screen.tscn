@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cya2j34cftfsl"]
 
 [ext_resource type="Texture2D" uid="uid://dmwong5crituy" path="res://icon.svg" id="1_cjqy3"]
-[ext_resource type="Script" uid="uid://n0ei36fatj4u" path="res://simple_loading_screen.gd" id="1_ys3cg"]
+[ext_resource type="Script" uid="uid://n0ei36fatj4u" path="res://simple-loading-screen/simple_loading_screen.gd" id="1_ys3cg"]
 
 [sub_resource type="Animation" id="Animation_h2yge"]
 length = 0.001

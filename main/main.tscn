@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://blo7hdl6886k8"]
 
-[ext_resource type="Script" uid="uid://bi6ws8g8ues4y" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://cya2j34cftfsl" path="res://simple_loading_screen.tscn" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://bc05is6aiotk6" path="res://confirmation_panel.tscn" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://bi6ws8g8ues4y" path="res://main/main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cya2j34cftfsl" path="res://simple-loading-screen/simple_loading_screen.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bc05is6aiotk6" path="res://confirmation-panel/confirmation_panel.tscn" id="3_h2yge"]
 
 [node name="Main" type="Control"]
 layout_mode = 3

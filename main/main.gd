@@ -26,6 +26,7 @@ func _ready() -> void:
 	Lobby.server_creation_failed.connect(_on_host_failed)
 	Lobby.player_disconnected.connect(_on_disconnected)
 	
+	
 	leave_confirmation_panel.positive_pressed.connect(_on_confirm_leave_button_pressed)
 	leave_confirmation_panel.negative_pressed.connect(_on_confirm_stay_button_pressed)
 	
@@ -150,11 +151,6 @@ func _on_confirm_leave_button_pressed() -> void:
 		# Shut down server locally
 		_close_server()
 	else:
-		# notify everyone that I want to disconnect
-		_disconnect.rpc()
-		
-		#await get_tree().process_frame
-		
 		# actually disconnect
 		# this triggers `multiplayer.peer_disconnected` on others
 		_close_client()
@@ -164,12 +160,6 @@ func _on_confirm_leave_button_pressed() -> void:
 func _server_shutdown():
 	add_log("Server is shutting down")
 	DebugUtils._print(self, "Server is shutting down...")
-
-
-@rpc("any_peer", "reliable")
-func _disconnect() -> void:
-	var disconnected_peer_id = multiplayer.get_remote_sender_id()
-	DebugUtils._print(self, "Player %d about to disconnect" % disconnected_peer_id)
 
 
 func _close_client() -> void:
@@ -197,8 +187,11 @@ func _on_disconnected(peer_id):
 			._set_subtitle("Host or join a new game.") \
 			._show(0.2)
 	else:
+		add_log("Player %d just disconnected" % peer_id)
 		var peer_idx = peer_options_button.get_item_index(peer_id)
 		peer_options_button.remove_item(peer_idx)
+		if peer_options_button.has_selectable_items():
+			peer_options_button.select(0)
 #endregion
 
 

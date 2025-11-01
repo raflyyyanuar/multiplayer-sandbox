@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bc05is6aiotk6"]
 
-[ext_resource type="Script" uid="uid://b4aqsixr64aje" path="res://confirmation_panel.gd" id="1_gikuw"]
+[ext_resource type="Script" uid="uid://b4aqsixr64aje" path="res://confirmation-panel/confirmation_panel.gd" id="1_gikuw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm2m"]
 expand_margin_left = 12.0
