@@ -181,6 +181,7 @@ func _close_server() -> void:
 
 func _on_disconnected(peer_id):
 	if peer_id == 1:
+		add_log("Host just disconnected")
 		leave_confirmation_panel \
 			._force_positive() \
 			._set_title("Host has left the game") \
